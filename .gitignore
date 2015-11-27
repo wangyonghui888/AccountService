@@ -2,5 +2,7 @@
 .classpath
 .project
 .metadata
+.DS_Store
+.recommenders
 target
 RemoteSystemTempFiles
