@@ -3,8 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<artifactId>account-captcha</artifactId>
-	<packaging>jar</packaging>
 	<name>Account Captcha</name>
+	<packaging>jar</packaging>
 	
 	<parent>
 		<groupId>com.lawrence.account</groupId>
@@ -14,7 +14,39 @@
 	</parent>
 	
 	<properties>
-
+		<kaptcha.version>2.3</kaptcha.version>
 	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.google.code.kaptcha</groupId>
+			<artifactId>kaptcha</artifactId>
+			<version>${kaptcha.version}</version>
+			<classifier>jdk15</classifier>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>		
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+	</dependencies>
 	
 </project>
