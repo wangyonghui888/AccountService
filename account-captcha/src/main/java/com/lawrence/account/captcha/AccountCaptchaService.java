@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface AccountCaptchaService {
 
-	public String generateCaptchaKey() throws AccountCaptchaException;
+	public String genKey() throws AccountCaptchaException;
 	
-	public byte[] generateCaptchaImage() throws AccountCaptchaException;
+	public byte[] genImage(String key) throws AccountCaptchaException;
 	
-	public boolean validate() throws AccountCaptchaException;
+	public boolean validate(String key, String value) throws AccountCaptchaException;
 	
 	public List<String> getPreDefinedTexts();
 	

@@ -6,7 +6,11 @@ public class AccountCaptchaException extends Exception{
 		super();
 	}
 	
-	AccountCaptchaException(String msg, Exception e){
+	public AccountCaptchaException(String msg, Exception e){
 		super(msg, e);
+	}
+	
+	public AccountCaptchaException(String  msg){
+		super(msg);
 	}
 }
