@@ -19,10 +19,10 @@ public class AccountPersistServiceTest {
 	
 	@Before
 	public void prepare() throws AccountPersistException{
-		File accountsFile = new File("target/test-classes/accounts.xml");
+		File accountsFile = new File("target/classes/accounts.xml");
 		if(accountsFile.exists()) accountsFile.delete();
 		
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("account-persist-test.xml");
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("account-persist.xml");
 		service = (AccountPersistService) ctx.getBean("accountPersistService");
 		Account account = new Account();
 		account.setId(testId);
