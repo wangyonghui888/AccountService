@@ -28,6 +28,7 @@ public class AccountCaptchaServiceImpl implements AccountCaptchaService, Initial
 	
 	private Map<String, String> captchaDict = new HashMap<String, String>();
 	
+	 //Get string defined in preDefinedTexts as captcha value repeatly.
 	private String getCaptchaString(){
 		if(preDefinedTexts != null && preDefinedTexts.size() > 0){
 //			return preDefinedTexts.get(count ++ % preDefinedTexts.size());
@@ -74,7 +75,11 @@ public class AccountCaptchaServiceImpl implements AccountCaptchaService, Initial
 	public boolean validate(String key, String value) throws AccountCaptchaException {
 		String storagedValue = captchaDict.get(key);
 		if(storagedValue == null) throw new AccountCaptchaException("Captcha key not found: " + key);
-		if(storagedValue.equals(value)) return true;
+		if(storagedValue.equals(value)) {
+			captchaDict.remove(key);
+			return true;
+		}
+		//TODO remove useless captcha when fail to validate: not yet finish. 
 		return false;
 	}
 

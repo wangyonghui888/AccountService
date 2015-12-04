@@ -7,6 +7,7 @@ import static org.junit.Assert.assertFalse;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -24,12 +25,10 @@ public class AccountCaptchaServiceTest {
 	
 	@Before
 	public void prepare(){
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("account-captcha-test.xml");
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("account-captcha.xml");
 		service = (AccountCaptchaService) ctx.getBean("accountCaptchaService");
 		
-		List<String> preDefinedValue = new ArrayList<String>();
-		preDefinedValue.add(value1);
-		preDefinedValue.add(value2);
+		List<String> preDefinedValue = Arrays.asList(value1, value2);
 		service.setPreDefinedTexts(preDefinedValue);
 	}
 	
