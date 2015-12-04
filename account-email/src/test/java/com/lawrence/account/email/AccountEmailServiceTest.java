@@ -12,7 +12,7 @@ import com.icegreen.greenmail.util.GreenMail;
 import com.icegreen.greenmail.util.GreenMailUtil;
 import com.icegreen.greenmail.util.ServerSetup;
 
-import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.*;
 
 public class AccountEmailServiceTest {
 	
@@ -20,7 +20,7 @@ public class AccountEmailServiceTest {
 	
 	@Before
 	public void startEMailService() throws Exception{
-		//cause Permission deny with port below 1024 on Mac OS X
+		//cause Permission deny with port below 1024 on Mac OS X, port 8888 should align with email.port in propertie file.
 		ServerSetup setup = new ServerSetup(8888, null, ServerSetup.PROTOCOL_SMTP);
 		greenMail = new GreenMail(setup);
 		greenMail.setUser("greenMailReceiver", "123654");
@@ -41,7 +41,8 @@ public class AccountEmailServiceTest {
 		String subject = "Subject to test";
 		String content = "<h3>Hello World</h3>";
 		String receiver = "receiver@gmail.com";
-		emailService.sendMail(receiver, subject, content);
+		boolean flag = emailService.sendMail(receiver, subject, content);
+		assertTrue(flag);
 		
 		//retrieve mail through Green Mail
 		greenMail.waitForIncomingEmail(2000, 1);

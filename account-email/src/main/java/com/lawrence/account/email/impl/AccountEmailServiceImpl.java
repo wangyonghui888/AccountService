@@ -16,7 +16,7 @@ public class AccountEmailServiceImpl implements AccountEmailService{
 	private String systemEmail;
 
 	@Override
-	public void sendMail(String to, String subject, String htmlContent) throws AccountEmailException {
+	public boolean sendMail(String to, String subject, String htmlContent) throws AccountEmailException {
 		try {
 			MimeMessage message = sender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message);
@@ -27,6 +27,7 @@ public class AccountEmailServiceImpl implements AccountEmailService{
 			helper.setText(htmlContent, true);
 			
 			sender.send(message);
+			return true;
 		} catch (MessagingException e) {
 			throw new AccountEmailException("Fail to send email", e);
 		}

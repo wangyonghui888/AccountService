@@ -4,8 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<!-- 在classpath下找到email.properties文件，通过propertyConfigurer载入 -->
-		<property name="location" value="classpath:email.properties"/>
+		<property name="location" value="classpath:account_service.properties"/>
 	</bean>
 	
 	<bean id="sender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
