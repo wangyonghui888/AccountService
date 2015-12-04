@@ -23,8 +23,7 @@ public class AccountEmailServiceTest {
 		//cause Permission deny with port below 1024 on Mac OS X
 		ServerSetup setup = new ServerSetup(8888, null, ServerSetup.PROTOCOL_SMTP);
 		greenMail = new GreenMail(setup);
-		greenMail.setUser("example@example.com", "123654");
-		
+		greenMail.setUser("greenMailReceiver", "123654");
 		greenMail.start();
 	}
 	
@@ -35,20 +34,22 @@ public class AccountEmailServiceTest {
 
 	@Test
 	public void testSendEmail() throws Exception{
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("account-email-test.xml");
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("account-email.xml");
 		AccountEmailService emailService = (AccountEmailService) ctx.getBean("accountEmailService");
 		
-		//send mail
+		//send mail by javax.mail
 		String subject = "Subject to test";
 		String content = "<h3>Hello World</h3>";
-		String toWhom = "ToExample@example.com";
-		emailService.sendMail(toWhom, subject, content);
+		String receiver = "receiver@gmail.com";
+		emailService.sendMail(receiver, subject, content);
 		
-		//receive mail
+		//retrieve mail through Green Mail
 		greenMail.waitForIncomingEmail(2000, 1);
 		Message[] msgs = greenMail.getReceivedMessages();
 		assertEquals(1, msgs.length);
-		assertEquals(subject, msgs[0].getSubject());
-		assertEquals(content, GreenMailUtil.getBody(msgs[0]).trim());
+		
+		Message receivedMail = msgs[0];
+		assertEquals(subject, receivedMail.getSubject());
+		assertEquals(content, GreenMailUtil.getBody(receivedMail).trim());
 	}
 }
