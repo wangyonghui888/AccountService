@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:account_persist.properties"/>
+		<property name="location" value="classpath:account_service.properties"/>
 	</bean>
 	
 	<bean id="accountPersistService" class="com.lawrence.account.persist.impl.AccountPersistServiceImpl">
