@@ -12,7 +12,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			classpath:/account-service.xml
-			classpath:/account-emailxml
+			classpath:/account-email.xml
 			classpath:/account-persist.xml
 			classpath:/account-captcha.xml
 		</param-value>
@@ -20,7 +20,7 @@
 	
 	<servlet>
 		<servlet-name>RegisterServlet</servlet-name>
-		<servlet-class></servlet-class>
+		<servlet-class>com.lawrence.account.servlet.RegisterServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -29,7 +29,7 @@
 	</servlet-mapping>
 	
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>register.jsp</welcome-file>
 	</welcome-file-list>
 	
 </web-app>
