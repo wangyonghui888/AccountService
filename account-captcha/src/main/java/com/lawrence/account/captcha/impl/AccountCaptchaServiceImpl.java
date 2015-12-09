@@ -79,7 +79,6 @@ public class AccountCaptchaServiceImpl implements AccountCaptchaService, Initial
 			captchaDict.remove(key);
 			return true;
 		}
-		//TODO remove useless captcha when fail to validate: not yet finish. 
 		return false;
 	}
 
