@@ -19,31 +19,31 @@
 		<div id="container">
 			<h2>注册</h2>
 			<form action="register" method="post" id="registerForm">
-			<input type="hidden" id="key" value="<%= captchaKey%>">
+			<input type="hidden" name="key" value="<%= captchaKey%>">
 				<table>
 					<tr>
-						<td>用户ID：</td><td><input type="text" id="uid"></td>
+						<td>用户ID：</td><td><input type="text" name="uid"></td>
 					</tr>
 					<tr>
-						<td>昵称：</td><td><input type="text" id="uname"></td>
+						<td>昵称：</td><td><input type="text" name="uname"></td>
 					</tr>
 					<tr>
-						<td>关联邮箱:</td><td><input type="text" id="email"></td>
+						<td>关联邮箱:</td><td><input type="text" name="email"></td>
 					</tr>
 					<tr>
-						<td>密码：</td><td><input type="password" id="pwd"></td>
+						<td>密码：</td><td><input type="password" name="pwd"></td>
 					</tr>
 					<tr>
-						<td>确认密码：</td><td><input type="password" id="pwdConfirm"></td>
+						<td>确认密码：</td><td><input type="password" name="pwdConfirm"></td>
 					</tr>
 					<tr>
-						<td>请输入验证码：</td><td><input type="text" id=captcha></td>
+						<td>请输入验证码：</td><td><input type="text" name=captcha></td>
 					</tr>
 					<tr>
 						<td colspan="2"><img src="<%= contextPath%>/captcha-image?key=<%= captchaKey %>"></td>
 					</tr>
 					<tr>
-						<td><input type="button" value="注册" id="commitBtn" onclick="test();"></td><td><input type="button" value="取消"></td>
+						<td colspan="2"><input type="submit" value="注册" onclick="checkForSubmit();">&nbsp;&nbsp;&nbsp;<input type="reset" value="取消"></td>
 					</tr>
 				</table>
 			</form>

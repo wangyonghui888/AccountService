@@ -36,7 +36,9 @@ public class RegisterServlet extends HttpServlet{
 		response.setCharacterEncoding("UTF-8");
 		
 		String captchaKey = request.getParameter("key");
-		String captchaValue = request.getParameter("captcha");//user input
+		String captchaValue = request.getParameter("captcha");//from user input
+		
+		String url = getServletContext().getRealPath("/") + "activate";
 		
 		String uid = request.getParameter("uid");
 		String uname = request.getParameter("uname");
@@ -52,6 +54,7 @@ public class RegisterServlet extends HttpServlet{
 		signup.setPasswordConfirm(pwdcon);
 		signup.setCaptchaKey(captchaKey);
 		signup.setCaptchaValue(captchaValue);
+		signup.setActivateServiceUrl(url);
 		
 		try {
 			boolean isSucceeded = service.register(signup);
@@ -61,7 +64,7 @@ public class RegisterServlet extends HttpServlet{
 				response.sendError(400, "Unable to register.");
 			}
 		} catch (AccountServiceException e) {
-			response.sendError(400, "Exception occurs!");
+			response.sendError(400, "Exception occurs: " + e);
 		}
 	}
 

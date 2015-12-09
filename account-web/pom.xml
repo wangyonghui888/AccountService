@@ -20,7 +20,9 @@
 		<jsp.version>2.0</jsp.version>
 		<account.service.version>1.0.0-SNAPSHOT</account.service.version>
 		<spring.version>2.5.6</spring.version>
-		<jetty.version>7.1.0.RC1</jetty.version>
+		
+		<jetty.version>7.1.6.v20100715</jetty.version>
+		<cargo.version>1.4.15</cargo.version>
 	</properties>
 	
 	<dependencies>
@@ -64,7 +66,7 @@
 			</resource>
 		</resources>
  		<plugins>
- 			<plugin>
+  			<plugin>
  				<groupId>org.mortbay.jetty</groupId>
  				<artifactId>maven-jetty-plugin</artifactId>
  				<version>${jetty.version}</version>
@@ -72,6 +74,21 @@
  					<scanIntervalSeconds>5</scanIntervalSeconds>
  				</configuration>
  			</plugin>
+<!-- 			<plugin>
+			  <groupId>org.codehaus.cargo</groupId>
+			  <artifactId>cargo-maven2-plugin</artifactId>
+			  <version>${cargo.version}</version>
+			  <configuration>
+			  	<container>
+			  		<containerId>tomcat9x</containerId>
+			  		<homt>/Users/Lawrence/Developer/Tomcat/apache-tomcat-9.0.0.M1</homt>
+			  	</container>
+			  	<configuration>
+			  		<type>existing</type>
+			  		<home>/Users/Lawrence/Developer/Tomcat/apache-tomcat-9.0.0.M1</home>
+			  	</configuration>
+			  </configuration>
+			</plugin> -->
 		</plugins>
 	</build>
 </project>
