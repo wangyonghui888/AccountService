@@ -27,9 +27,10 @@ public class AccountServiceImpl implements AccountService{
 	public boolean register(SignUpRequest request) throws AccountServiceException {
 		try {
 			boolean validatePassFlag = captchaService.validate(request.getCaptchaKey(), request.getCaptchaValue());
-			if(!validatePassFlag) return false;
+			if(!validatePassFlag) 
+				throw new AccountServiceException("Incorrect captcha.");
 		} catch (AccountCaptchaException e) {
-			throw new AccountServiceException("Unable to validate captcha key.", e);
+			throw new AccountServiceException("Unable to validate captcha key. " + e.getMessage());
 		}
 		
 		String pwd = request.getPassword();
@@ -44,7 +45,7 @@ public class AccountServiceImpl implements AccountService{
 			try {
 				persistService.createAccount(account);
 			} catch (AccountPersistException e) {
-				throw new AccountServiceException("Unable to create account.", e);
+				throw new AccountServiceException("Unable to create account." + e);
 			}
 			
 			String actKey = RandomGenerator.getRandomString();//this key is used for account activation.
@@ -55,7 +56,7 @@ public class AccountServiceImpl implements AccountService{
 			try {
 				return emailService.sendMail(account.getEmail(), "Verify Your Account", activateServiceUrl);
 			} catch (AccountEmailException e) {
-				throw new AccountServiceException("Unable to send verification mail.", e);
+				throw new AccountServiceException("Unable to send verification mail." + e);
 			}
 		}else{
 			throw new AccountServiceException("2 passwords do not match.");
