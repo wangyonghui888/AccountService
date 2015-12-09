@@ -22,10 +22,18 @@
 		<servlet-name>RegisterServlet</servlet-name>
 		<servlet-class>com.lawrence.account.servlet.RegisterServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>CaptchaImageServlet</servlet-name>
+		<servlet-class>com.lawrence.account.servlet.CaptchaImageServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>RegisterServlet</servlet-name>
 		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CaptchaImageServlet</servlet-name>
+		<url-pattern>/captcha-image</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>
