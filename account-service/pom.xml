@@ -9,6 +9,7 @@
 	</parent>
 	<artifactId>account-service</artifactId>
 	<name>Account Service</name>
+	<packaging>jar</packaging>
 	
 	<properties>
 		<artifact.version>1.0.0-SNAPSHOT</artifact.version>
